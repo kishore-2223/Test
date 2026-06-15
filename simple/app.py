@@ -423,5 +423,14 @@ def logout_handler():
     return 'OK'
 
 
+@app.route('/welcome_home', methods=['POST'])
+def logout_handler():
+    """
+    Greetings from the system.
+    """
+    session.clear()
+    return 'Hello to everyone!...'
+
+
 if __name__ == '__main__':
     app.run(debug=True)
