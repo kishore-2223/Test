@@ -20,3 +20,11 @@ def download_to(url, path):
     with open(path, "wb") as fd:
         for chunk in req.iter_content():
             fd.write(chunk)
+
+
+def download_from(url, path):
+    req = requests.get(url, stream=True)
+
+    with open(path, "wb") as fd:
+        for chunk in req.iter_content():
+            fd.write(chunk)

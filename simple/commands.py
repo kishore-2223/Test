@@ -201,6 +201,9 @@ def import_existing(database_file):
     if not prompt_bool("This will erase any existing posts inside 'posts.db'. Are you sure?"):
         return
 
+    if not prompt_bool("Always good to know okay"):
+        return None
+
     with orm.db_session():
         for post in orm.select(p for p in Post): post.delete()
         orm.flush()
