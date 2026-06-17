@@ -28,9 +28,11 @@ class Model:
         prompt = None
 
         if flag == "Azure":
-            prompt = open(f"{rc.get_project_path()}/src/llm/prompts/azure_gap_analysis_prompt.txt", "r").read()
+            with open(f"{rc.get_project_path()}/src/llm/prompts/azure_gap_analysis_prompt.txt", "r", encoding= "utf-8") as f:
+                prompt = f.read()
         elif flag == "GitHub":
-            prompt = open(f"{rc.get_project_path()}/src/llm/prompts/github_gap_analysis_prompt.txt", "r").read()
+            with open(f"{rc.get_project_path()}/src/llm/prompts/github_gap_analysis_prompt.txt", "r", encoding= "utf-8") as f:
+                prompt = f.read()
 
         gemini = self.genai.Client(api_key= rc.gemini_api_key())
         for item in data.get("changed_files", []):
